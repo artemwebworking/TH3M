@@ -201,6 +201,29 @@ button[type='submit']
             -webkit-text-stroke-color: #fff
             -webkit-text-stroke-width: .5px
             color: transparent !important
+.marquee
+	// display: flex
+	margin-top: gem(165)
+	height: gem(68)
+	background: #F2E8FF
+	// align-items: center
+	// animation: marquee 10s linear infinite forwards  
+	&-item
+		display: flex
+		flex-direction: row
+		align-items: center
+		height: gem(68)
+	p
+		margin-right: gem(37)
+		font-size: gem(32)
+		color: #202039
+	p:nth-child(odd)
+		-webkit-text-stroke: 1px #202039
+		color: #F2E8FF
+	// p:nth-child(even)
+.js-marquee
+	display: flex
+	align-items: center
 
 @media all and (max-width: 1024px)
     .header
