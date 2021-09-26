@@ -24,6 +24,9 @@
 @mixin label-1
 	@include mixed-lbl(var(--color-white), var(--sub-font), var(--font-size-label1), var(--font-weight-5), var(--letter-spacing), var(--line-height-label-1))
 
+@mixin label-2
+	@include mixed-lbl(var(--color-white), var(--accent-font), var(--font-size-label2), var(--font-weight-5), var(--letter-spacing), var(--line-height-label-2))
+
 //desc-1
 @mixin desc-1
 	@include mixed-lbl(var(--color-white), var(--main-font), var(--font-size-desc1), var(--font-weight-4), var(--letter-spacing), var(--line-height-desc1))
@@ -58,6 +61,10 @@ article, footer, header, nav, section, input, textarea, button
 
     &.label-1
         @include label-1
+        &.bold
+            font-family: 'Axiforma-Bold'
+    &.label-2
+        @include label-2
 
     &.desc-1
         @include desc-1
