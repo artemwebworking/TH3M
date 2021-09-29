@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//margquee
 	if (isDesctop) {
 		$('.marquee').marquee({
-			duration: 3000,
+			duration: 50000,
 			gap: 0,
 			duplicated: true,
 			startVisible: true,

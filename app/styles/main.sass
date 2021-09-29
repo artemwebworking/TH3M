@@ -102,32 +102,39 @@ button[type='submit']
 		display: flex
 		width: 100%
 		flex-direction: column
-		margin: gem(116) 0 0 gem(100)
-		justify-content: space-between
+		margin-left: gem(100)
+		justify-content: flex-end
+		position: relative
+		&-img
+			display: flex
+			position: absolute
+			right: gem(-2)
+			top: gem(116)
+			z-index: 1
+			img
+				width: gem(40)
+				height: auto 
 		&-top
 			display: flex
 			justify-content: space-between
 			&-left
 				display: flex
 				flex-direction: column
+				position: relative
 				img:first-child
 					width: gem(14)
 					height: auto
-					margin: gem(79) 0 gem(165) 0
+					position: absolute
+					top: gem(-125)
+					left: 0
 				img:last-child
 				   width: gem(92)
 				   height: auto
-			&-right
-				display: flex
-				img
-					width: gem(48)
-					height: auto 
-					position: relative
-					right: gem(-2)
 		&-bottom
 			display: flex
 			justify-content: space-between
 			margin-bottom: gem(68)
+			margin-top: gem(101)
 			&-subscribe
 				display: flex
 				&-left
@@ -135,7 +142,6 @@ button[type='submit']
 					flex-direction: column
 					&-title
 						display: flex
-						margin-bottom: gem(36)
 						p.label-1, span.label-1
 							font-size: gem(12)
 							line-height: gem(20.5)
@@ -149,6 +155,7 @@ button[type='submit']
 							width: gem(191)
 							margin-right: gem(26)
 							position: relative
+							margin-top: gem(40)
 							&::before
 								content: ''
 								display: block
@@ -158,6 +165,7 @@ button[type='submit']
 								width: 100%
 								height: gem(1)
 								background: #4E5663
+								transition: 0.3s all ease
 							&::after
 								content: ''
 								display: block
@@ -179,9 +187,13 @@ button[type='submit']
 								outline: none
 								border: none
 								margin: 0
-								padding: 0
+								padding: 0 gem(3)
 								position: relative
-								margin-bottom: gem(14)
+								margin-bottom: gem(12)
+								font-family: 'Satoshi-Regular', sans-serif
+								font-size: gem(10)
+								line-height: gem(13.5)
+								color: #E1E1E1
 								&::placeholder
 									font-family: '1,617-Regular', sans-serif
 									font-size: gem(11)
@@ -203,58 +215,64 @@ button[type='submit']
 								&:focus
 									&::placeholder
 										opacity: 0
+							&:hover
+								&::before, &::after
+									background: #7E8897 
 
 						&-button
 							display: flex
+							align-items: center
 							padding: 0
 							margin: 0
-							font-size: gem(11)
-							line-height: gem(11)
-							color: unset
-							background: linear-gradient(90deg, rgba(255,255,255,1) 25%, rgba(207,119,151,1) 50%, rgba(113,56,193,1) 75%, rgba(82,112,234,1) 100%)
-							background-size: 300% auto
-							background-position-x: 0%
-							-webkit-background-clip: text
-							-webkit-text-fill-color: transparent
 							border: none
-							cursor: pointer
-							transition: 0.3s all ease
-							&:hover
-								transition: 0.3s all ease
+							background: none
+							p
+								font-size: gem(11)
+								line-height: gem(11)
 								color: unset
-								background-position-x: 100%
+								background: linear-gradient(90deg, rgba(255,255,255,1) 25%, rgba(207,119,151,1) 50%, rgba(113,56,193,1) 75%, rgba(82,112,234,1) 100%)
+								background-size: 300% auto
+								background-position-x: 0%
 								-webkit-background-clip: text
 								-webkit-text-fill-color: transparent
-				&-right
-					display: flex
-					margin-left: gem(20)
-					position: relative
-					top: gem(14)
-					&::before
-						content: ''
-						display: block
-						position: absolute
-						left: gem(-1)
-						top: calc( 50% - 2px )
-						width: gem(5)
-						height: gem(5)
-						transform: rotate(45deg)
-						background: #4E5663
-						transition: 0.3s all ease
-						z-index: 100
-					.opening_form_button
-						width: gem(100) !important
-						height: auto !important
-						cursor: pointer
-						path, circle
-							transition: 0.3s all ease
-							stroke: #4E5663
-						&:hover
-							path, circle
-								stroke: #FFFFFF
-					&:hover
-						&::before
-							background: #FFFFFF
+								cursor: pointer
+								transition: 0.3s all ease
+								&:hover
+									transition: 0.3s all ease
+									color: unset
+									background-position-x: 100%
+									-webkit-background-clip: text
+									-webkit-text-fill-color: transparent
+							&-circle
+								display: flex
+								margin-left: gem(20)
+								position: relative
+								cursor: pointer
+								&::before
+									content: ''
+									display: block
+									position: absolute
+									left: gem(-1)
+									top: calc( 50% - 2px )
+									width: gem(5)
+									height: gem(5)
+									transform: rotate(45deg)
+									background: #4E5663
+									transition: 0.3s all ease
+									z-index: 100
+								.opening_form_button
+									width: gem(100) !important
+									height: auto !important
+									cursor: pointer
+									path, circle
+										transition: 0.3s all ease
+										stroke: #4E5663
+									&:hover
+										path, circle
+											stroke: #FFFFFF
+								&:hover
+									&::before
+										background: #FFFFFF
 			&-description
 				display: flex
 				align-items: center
@@ -280,9 +298,22 @@ button[type='submit']
 						width: gem(5)
 						height: gem(5)
 						transform: rotate(45deg)
-						background: #ffff
+						background: linear-gradient(90deg, #CF7797 1.1%, #7138C1 53.35%, #5270EA 100%)
 						transition: 0.3s all ease
 						z-index: 100
+					&::after
+						content: ''
+						display: block
+						position: absolute
+						left: gem(-1)
+						top: calc( 50% - 2px )
+						width: gem(5)
+						height: gem(5)
+						transform: rotate(45deg)
+						background: #ffff
+						transition: 0.3s all ease
+						z-index: 101
+						opacity: 1
 					svg
 						width: gem(55)
 						height: gem(55)
@@ -293,6 +324,9 @@ button[type='submit']
 						path, circle
 							stroke: #ffff
 							transition: 0.3s all ease
+						circle
+							fill: rgba(255,255,255,0)
+							transition: 0.3s all ease
 					.sound_button-on
 						opacity: 1
 						pointer-events: unset
@@ -301,13 +335,14 @@ button[type='submit']
 						pointer-events: none
 					&:hover
 						circle
-							fill: #ffff
+							fill: rgba(255,255,255,1)
 							transition: 0.3s all ease
 						path
 							stroke: #11141C
 							transition: 0.3s all ease
-						&::before
-							background: linear-gradient(90deg, #CF7797 1.1%, #7138C1 53.35%, #5270EA 100%)
+						&::after
+							opacity: 0
+							transition: 0.3s all ease
 					&.active
 						.sound_button-on
 							opacity: 0
@@ -320,7 +355,7 @@ button[type='submit']
 
 	&-ticker
 		display: flex
-		z-index: 2
+		z-index: 3
 		width: gem(174)
 		height: 100vh
 		background: linear-gradient(90deg, #11141C 0%, rgba(21, 21, 27, 0) 100%)
@@ -332,21 +367,35 @@ button[type='submit']
 			color: transparent !important
 .marquee
 	// height: 100%
-	// width: 100%
-	background: #F2E8FF
+	width: 100%
+	background: linear-gradient(180deg, #11141C 0%, rgba(21, 21, 27, 0) 100%)
 	position: absolute
 	// bottom: 0
 	&-item
-		display: inline-block
+		display: flex
+		flex-direction: column
+		justify-content: space-around
+		height: 100%
 	p
-		margin-right: gem(37)
-		font-size: gem(32)
-		color: #202039
+		margin: 0
+		font-size: gem(68.2)
+		font-family: '1,617-Regular', sans-serif
+		color: #FFFFFF
 		writing-mode: vertical-rl
 		transform: rotate(180deg)
+		position: relative
+		&::before
+			content: ''
+			display: block
+			width: gem(6)
+			height: gem(6)
+			background: #FFFFFF
+			position: absolute
+			left: calc( 50% - 1px )
+			top: gem(-48)
 	p:nth-child(odd)
-		-webkit-text-stroke: 1px #202039
-		color: #F2E8FF
+		-webkit-text-stroke: 1px #4E5663
+		color: rgba(78, 86, 99, 0)
 .js-marquee
 	display: flex
 	align-items: center
@@ -355,7 +404,9 @@ button[type='submit']
 		display: block
 		.js-marquee
 			display: flex
-			height: gem(1590)
+			position: relative
+			left: gem(40)
+			height: gem(1820)
 .cursor
 	position: fixed
 	z-index: 5
@@ -365,7 +416,6 @@ button[type='submit']
 	display: flex
 	justify-content: center
 	align-items: center
-	
 	&::before, &::after
 		content: ''
 		width: gem(20)
@@ -413,6 +463,11 @@ button[type='submit']
 				height: 100%
 		&-content
 			margin: gem(175) 0 0 gem(48)
+			&-img
+				width: gem(48)
+				height: gem(384)
+				right: gem(-10)
+				top: gem(-40)
 			&-top
 				&-left
 					img:first-child
@@ -421,11 +476,6 @@ button[type='submit']
 						margin-top: gem(261)
 						width: gem(66)
 						height: gem(123)
-				&-right
-					img
-						width: gem(48)
-						height: gem(384)
-						right: gem(-4)
 			&-bottom
 				flex-direction: column-reverse
 				margin-bottom: gem(60)
@@ -455,9 +505,19 @@ button[type='submit']
 						width: gem(32)
 	.opening
 		flex-direction: column
+		justify-content: space-between
+		min-height: gem(800) //tut
+		&-bgr
+			height: 100vh
+			min-height: gem(800) //tut
 		&-content
 			margin: gem(122) 0 0 0
-			padding-left: gem(32)
+			padding: 0 gem(28) 0 gem(30)
+			&-img
+				width: gem(44)
+				height: gem(190)
+				right: gem(-14)
+				top: 0
 			&-top
 				&-left
 					img:first-child
@@ -468,21 +528,23 @@ button[type='submit']
 						height: gem(74)
 				&-right
 					justify-content: flex-end
-					img
-						width: gem(44)
-						height: gem(190)
-						right: gem(-12)
 			&-bottom
 				flex-direction: column-reverse
 				margin-bottom: 0
 				&-description
 					margin-bottom: gem(67)
+					justify-content: space-between
 					p
 						margin-right: 0
-						max-width: gem(314)
-					img
+						max-width: gem(280)
+					&-sound
 						margin-right: 0
 						width: gem(40)
+						height: gem(40)
+						svg
+							width: gem(40)
+							height: gem(40)
+					
 				&-subscribe
 					&-right
 						margin-left: gem(10.5)
@@ -490,13 +552,28 @@ button[type='submit']
 							margin-top: gem(14)
 							width: gem(48)
 					&-left
+						width: 100%
 						&-form
-							.label-2.opening-content-bottom-subscribe-left-form-button.up-text
+							width: 100%
+							justify-content: space-between
+							.label-2.up-text.cursor-hover
 								font-size: gem(9)
 								line-height: gem(9)
+							&-button
+								margin-top: gem(16)
+								&-circle
+									margin-left: gem(10)
+									.opening_form_button
+										width: gem(48) !important
+							&-email
+								margin-right: 0
+								margin-top: gem(33)
+								input::placeholder
+									font-size: gem(9)
+									line-height: gem(9)
 		&-ticker
 			width: 100%
-			height: gem(36)
+			height: gem(166)
 			display: flex
 			align-items: center
 			justify-content: center
@@ -508,15 +585,38 @@ button[type='submit']
 				width: gem(36)
 	.js-marquee
 		&-wrapper
+			height: 100%
+			display: flex
+			align-items: center
 			// display: flex
 			.js-marquee
 				height: gem(100)
+				left: unset
+				display: inline-block
 	.marquee-item
 		display: flex
 		flex-direction: row
+		margin-right: gem(16)
 	.marquee
 		position: relative
 		width: 100%
+		height: 100%
+		background: linear-gradient(180deg, #11141C 0%, rgba(21, 21, 27, 0) 100%)
 		p
 			transform: unset
 			writing-mode: unset
+			font-size: gem(24)
+			line-height: gem(36)
+			margin-right: gem(16)
+			&::before
+				content: ''
+				display: block
+				width: gem(6)
+				height: gem(6)
+				background: #FFFFFF
+				position: absolute
+				left: unset
+				right: gem(-9.5)
+				top: gem(14)
+		p:last-child
+			margin-right: 0
