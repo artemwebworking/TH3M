@@ -80,4 +80,93 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 
+	function validateEmail(email) {
+		const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}
+	
+	function validate(input) {
+		const email = input
+	}
+
+	//form subscribe to Quickstart
+	let form = document.getElementById('subscribe-form');
+	let inputWrapper = document.querySelector('.opening-content-bottom-subscribe-left-form-email')
+	let successSpan = document.querySelector('.footer-form-answer');
+	let formAnswer = document.querySelector('.form-answer')
+	
+	$('#subscribe-form').submit(function (event) {
+		event.preventDefault();
+		let emailInputValue = document.getElementById('email-input').value
+		if (validateEmail(emailInputValue)) {
+			//success validate
+			var form_data = $(this).serialize();
+			$.ajax({
+				type: 'POST',
+				url: 'send.php',
+				data: form_data,
+				success: function (data) {
+					//success send
+					formAnswer.innerHTML = 'success'
+					inputWrapper.classList.add('success')
+					setTimeout(() => {
+						inputWrapper.classList.remove('success')
+					}, 3000);
+				},
+				error: function (data) {
+					// error send
+					formAnswer.innerHTML = 'error'
+					inputWrapper.classList.add('global-error')
+					setTimeout(() => {
+						inputWrapper.classList.remove('success')
+					}, 3000);
+				}
+			});
+		} else {
+			//validation error
+			console.log('error validation')
+			inputWrapper.classList.add('error')
+			formAnswer.innerHTML = 'please enter a valid email address'
+		}
+	});
+
+	inputWrapper.addEventListener('input', () => {
+		inputWrapper.classList.remove('error')
+	})
+	// $('#subscribe-form').submit(function (event) { 
+	// 	event.preventDefault();
+	// 	let emailInputValue = document.getElementById('email-input').value
+	// 	if (validateEmail(emailInputValue)) {
+	// 		successSpan.innerHTML = 'success'
+	// 		gsap.to(successSpan, {
+	// 			opacity: 1,
+	// 			y: 0,
+	// 			duration: .3
+	// 		})
+	// 		gsap.to(successSpan, {
+	// 			opacity: 0,
+	// 			y: '.1rem',
+	// 			duration: .3,
+	// 			delay: 2
+	// 		})
+	// 		analytics.identify(emailInputValue);
+	// 		analytics.track("Subscribed to Email List", { email: emailInputValue});
+	// 		document.getElementById('email-input').value = ''
+	// 	} else {
+	// 		successSpan.innerHTML = 'please enter a valid email address'
+	// 		gsap.to(successSpan, {
+	// 			opacity: 1,
+	// 			y: 0,
+	// 			duration: .3
+	// 		})
+	// 		gsap.to(successSpan, {
+	// 			opacity: 0,
+	// 			y: '.1rem',
+	// 			duration: .3,
+	// 			delay: 2
+	// 		})
+	// 	}
+		
+	// })
+
 })

@@ -156,6 +156,17 @@ button[type='submit']
 							margin-right: gem(26)
 							position: relative
 							margin-top: gem(40)
+							&.error
+								p
+									opacity: 1
+							p
+								position: absolute
+								font-size: gem(16)
+								line-height: gem(20)
+								color: #fff
+								bottom: gem(-30)
+								opacity: 0
+								transition: all 0.3s ease
 							&::before
 								content: ''
 								display: block
