@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 
+	//custom cursor
 	let cursor = document.querySelector('.cursor');
 	let curosOn = document.querySelectorAll('.cursor-on');
 	let cursorHover = document.querySelectorAll('.cursor-hover')
@@ -67,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	})
 
+
+	//video
 	let soundButton = document.querySelector('.opening-content-bottom-description-sound')
 	let openingVideo = document.querySelector('.opening-bgr-video')
 
@@ -79,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		soundButton.classList.toggle('active')
 	})
 
+	//video unmuted here via click
+	document.addEventListener('click', () => {
+		openingVideo.muted = false
+	})
 
 	function validateEmail(email) {
 		const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -133,40 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	inputWrapper.addEventListener('input', () => {
 		inputWrapper.classList.remove('error')
 	})
-	// $('#subscribe-form').submit(function (event) { 
-	// 	event.preventDefault();
-	// 	let emailInputValue = document.getElementById('email-input').value
-	// 	if (validateEmail(emailInputValue)) {
-	// 		successSpan.innerHTML = 'success'
-	// 		gsap.to(successSpan, {
-	// 			opacity: 1,
-	// 			y: 0,
-	// 			duration: .3
-	// 		})
-	// 		gsap.to(successSpan, {
-	// 			opacity: 0,
-	// 			y: '.1rem',
-	// 			duration: .3,
-	// 			delay: 2
-	// 		})
-	// 		analytics.identify(emailInputValue);
-	// 		analytics.track("Subscribed to Email List", { email: emailInputValue});
-	// 		document.getElementById('email-input').value = ''
-	// 	} else {
-	// 		successSpan.innerHTML = 'please enter a valid email address'
-	// 		gsap.to(successSpan, {
-	// 			opacity: 1,
-	// 			y: 0,
-	// 			duration: .3
-	// 		})
-	// 		gsap.to(successSpan, {
-	// 			opacity: 0,
-	// 			y: '.1rem',
-	// 			duration: .3,
-	// 			delay: 2
-	// 		})
-	// 	}
-		
-	// })
 
+	
 })
