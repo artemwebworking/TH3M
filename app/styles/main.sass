@@ -517,13 +517,13 @@ button[type='submit']
 						width: gem(32)
 	.opening
 		flex-direction: column
-		justify-content: space-between
-		min-height: gem(800) //tut
+		justify-content: flex-end
+		min-height: gem(715) //tut
 		&-bgr
 			height: 100vh
-			min-height: gem(800) //tut
+			min-height: gem(715) //tut
 		&-content
-			margin: gem(122) 0 0 0
+			margin: gem(0) 0 0 0
 			padding: 0 gem(28) 0 gem(30)
 			&-img
 				width: gem(44)
@@ -585,12 +585,15 @@ button[type='submit']
 									line-height: gem(9)
 		&-ticker
 			width: 100%
-			height: gem(166)
+			height: gem(100)
 			display: flex
 			align-items: center
 			justify-content: center
 			overflow: hidden
-			margin-top: gem(46)
+			margin: 0
+			padding-top: gem(46)
+			padding-bottom: gem(30)
+			background: linear-gradient(0deg, rgba(16,19,27,1) 50%, rgba(16,19,27,0.01) 100%)
 			img
 				transform: rotate(90deg)
 				height: gem(414)
@@ -602,24 +605,33 @@ button[type='submit']
 			align-items: center
 			// display: flex
 			.js-marquee
-				height: gem(100)
+				height: gem(36)
 				left: unset
 				display: inline-block
+				margin: 0 gem(16) !important
+				&:first-child
+					margin-left: 0
+				&:last-child
+					margin-right: 0
 	.marquee-item
 		display: flex
 		flex-direction: row
-		margin-right: gem(16)
+		margin: gem(0)
 	.marquee
 		position: relative
 		width: 100%
 		height: 100%
-		background: linear-gradient(180deg, #11141C 0%, rgba(21, 21, 27, 0) 100%)
+		background: none
 		p
 			transform: unset
 			writing-mode: unset
 			font-size: gem(24)
 			line-height: gem(36)
-			margin-right: gem(16)
+			margin: 0 gem(16)
+			&:first-child
+				margin-left: 0
+			&:last-child
+				margin-right: 0
 			&::before
 				content: ''
 				display: block
@@ -628,7 +640,7 @@ button[type='submit']
 				background: #FFFFFF
 				position: absolute
 				left: unset
-				right: gem(-9.5)
+				right: gem(-16)
 				top: gem(14)
 		p:last-child
 			margin-right: 0

@@ -6,3 +6,17 @@
 /**/debug.log
 app/videos/opening-bgr.mp4
 app/assets/opening-bgr.mp4
+app/assets/opening-bgr.webm
+dist/index.html
+dist/css/main.min.css
+dist/images/Logo.svg
+dist/images/opening-form-button.svg
+dist/images/opening-left-big.svg
+dist/images/opening-left-small.svg
+dist/images/opening-right.svg
+dist/images/opening-sound-button-off.svg
+dist/images/opening-sound-button-on.svg
+dist/images/soc-fb.svg
+dist/images/soc-ig.svg
+dist/images/soc-tw.svg
+dist/js/app.min.js
