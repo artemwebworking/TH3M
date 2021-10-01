@@ -81,20 +81,37 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		soundButton.classList.toggle('active')
 	})
-
 	//video unmuted here via click
-	document.addEventListener('click', () => {
-		openingVideo.muted = false
+	let preloader = document.querySelector('.preloader')
+	let openingVideoUnmuted = document.querySelector('.preloader-buttons-yes')
+	let openingVideoMuted = document.querySelector('.preloader-buttons-no')
+
+	openingVideo.pause()
+
+	openingVideoUnmuted.addEventListener('click', () => {
+		openingVideo.muted = false;
+		// openingVideo.autoplay = true;
+		// openingVideo.loop = true;
+		preloader.classList.add('hidden');
+		openingVideo.play()
 	})
 
-	function validateEmail(email) {
-		const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(email);
-	}
+	openingVideoMuted.addEventListener('click', () => {
+		preloader.classList.add('hidden')
+		openingVideo.play();
+		soundButton.classList.toggle('active')
+		// openingVideo.autoplay = true;
+		// openingVideo.loop = true
+	})
+
+	// function validateEmail(email) {
+	// 	const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	// 	return re.test(email);
+	// }
 	
-	function validate(input) {
-		const email = input
-	}
+	// function validate(input) {
+	// 	const email = input
+	// }
 
 	//form subscribe to Quickstart
 	let form = document.getElementById('subscribe-form');
