@@ -61,7 +61,7 @@ button[type='submit']
 	align-items: center
 	width: 100%
 	height: 100vh
-	z-index: 200
+	z-index: 4
 	background: #000000
 	transition: 0.3s all ease
 	&.hidden
@@ -492,6 +492,22 @@ button[type='submit']
 	display: flex
 	justify-content: center
 	align-items: center
+	&-circle-one
+		position: absolute
+		width: 0
+		height: 0
+		transition: all 0.3s ease
+		border: gem(1) solid #4E5663
+		border-radius: 100%
+		opacity: 0
+	&-circle-two
+		position: absolute
+		width: 0
+		height: 0
+		transition: all 0.3s ease
+		border: gem(1) solid rgba(51, 51, 61, 0.3)
+		border-radius: 100%
+		opacity: 0
 	&::before, &::after
 		content: ''
 		width: gem(20)
@@ -508,9 +524,11 @@ button[type='submit']
 		left: 50%
 	&::after
 		top: 50%
-	img
+	svg
 		width: gem(20)
-
+		path
+			fill: #fff
+			transition: all 0.3s ease
 	&-on
 		cursor: none
 	&-hover
@@ -522,6 +540,26 @@ button[type='submit']
 			height: gem(48)
 		&::after
 			width: gem(48)
+	&.preloader_cursor
+		.cursor-circle-one
+			width: gem(96)
+			height: gem(96)
+			opacity: 1
+		.cursor-circle-two
+			width: gem(158)
+			height: gem(158)
+			opacity: 1
+		&::before
+			height: gem(48)
+			background: rgba(113, 56, 193, 1)
+		&::after
+			width: gem(48)
+			background: rgba(113, 56, 193, 1)
+		svg
+			path
+				fill: rgba(113, 56, 193, 1)
+
+
 @media all and (max-width: 1024px)
 	.preloader
 		justify-content: center

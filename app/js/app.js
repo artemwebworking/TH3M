@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	let cursor = document.querySelector('.cursor');
 	let curosOn = document.querySelectorAll('.cursor-on');
 	let cursorHover = document.querySelectorAll('.cursor-hover')
+	let preloaderButtons = document.querySelectorAll('.preloader_cursor_button')
 
 	document.addEventListener('mousemove', function (e) {
 		let x = e.clientX;
@@ -65,6 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 		item.addEventListener('mouseleave', () => {
 			cursor.classList.remove('hovered');
+		});
+	})
+
+	preloaderButtons.forEach(item => {
+		item.addEventListener('mouseover', () => {
+			cursor.classList.add('preloader_cursor');
+		});
+		item.addEventListener('mouseleave', () => {
+			cursor.classList.remove('preloader_cursor');
 		});
 	})
 
