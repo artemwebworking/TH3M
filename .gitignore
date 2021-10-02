@@ -21,3 +21,5 @@ dist/images/soc-ig.svg
 dist/images/soc-tw.svg
 dist/js/app.min.js
 dist/dist.7z
+app/assets.zip
+dist/dist.zip
