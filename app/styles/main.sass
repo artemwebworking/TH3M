@@ -220,9 +220,6 @@ button[type='submit']
 							margin-right: gem(26)
 							position: relative
 							margin-top: gem(40)
-							&.error
-								p
-									opacity: 1
 							p
 								position: absolute
 								font-size: gem(16)
@@ -231,7 +228,7 @@ button[type='submit']
 								bottom: gem(-30)
 								opacity: 0
 								transition: all 0.3s ease
-							&::before
+							.line
 								content: ''
 								display: block
 								position: absolute
@@ -241,7 +238,7 @@ button[type='submit']
 								height: gem(1)
 								background: #4E5663
 								transition: 0.3s all ease
-							&::after
+							.romb
 								content: ''
 								display: block
 								position: absolute
@@ -269,6 +266,28 @@ button[type='submit']
 								font-size: gem(10)
 								line-height: gem(13.5)
 								color: #E1E1E1
+								~ p
+									font-family: 'Satoshi-Regular', sans-serif
+									font-size: gem(9)
+									line-height: gem(13.5)
+									left: gem(3)
+									bottom: gem(-22)
+									color: #E1E1E1
+									opacity: 0
+									max-width: gem(191)
+								
+								&:focus
+									~ .line, ~ .romb
+										background: #536FE9
+								&.filled
+									~ .line, ~ .romb
+										background: #AEBBD2
+								&.mce_inline_error
+									~ p
+										opacity: 1
+										color: #CF7797
+									~ .line, ~ .romb
+										background: #CF7797
 								&::placeholder
 									font-family: '1,617-Regular', sans-serif
 									font-size: gem(11)
@@ -291,9 +310,22 @@ button[type='submit']
 									&::placeholder
 										opacity: 0
 							&:hover
-								&::before, &::after
-									background: #7E8897 
+								.line, .romb
+									background: #7E8897
+							
 
+							#mce-success-response, #mce-error-response
+								position: absolute
+								font-family: 'Satoshi-Regular', sans-serif
+								font-size: gem(9)
+								line-height: gem(13.5)
+								left: gem(3)
+								bottom: gem(-22)
+								color: #E1E1E1
+								max-width: gem(191)
+							#mce-error-response
+								color: #CF7797
+								bottom: gem(-34)
 						&-button
 							display: flex
 							align-items: center
@@ -352,12 +384,16 @@ button[type='submit']
 			&-description
 				display: flex
 				align-items: center
-				p
+				p, span
 					max-width: gem(343)
 					font-size: gem(16)
 					line-height: gem(28)
 					margin-right: gem(36)
 					color: #AEBBD2
+				span
+					line-height: gem(28)
+					position: relative
+					bottom: gem(-12)
 				&-sound
 					display: flex
 					position: relative
@@ -444,7 +480,7 @@ button[type='submit']
 .marquee
 	// height: 100%
 	width: 100%
-	background: linear-gradient(180deg, #11141C 0%, rgba(21, 21, 27, 0) 100%)
+	background: linear-gradient(180deg, rgba(17, 20, 28, 0.8) 0%, rgba(21, 21, 27, 0) 100%)
 	position: absolute
 	// bottom: 0
 	&-item
@@ -561,6 +597,9 @@ button[type='submit']
 
 
 @media all and (max-width: 1024px)
+	.cursor
+		&.worked, &.preloader_cursor
+			opacity: 0
 	.preloader
 		justify-content: center
 		video
