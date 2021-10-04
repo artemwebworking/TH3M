@@ -19,6 +19,7 @@ body
 	-webkit-font-smoothing: antialiased
 	-moz-osx-font-smoothing: grayscale
 	text-rendering: optimizeLegibility
+	overflow: hidden
 
 a
 	text-decoration: none
@@ -63,23 +64,34 @@ button[type='submit']
 	height: 100vh
 	z-index: 4
 	background: #000000
-	transition: 0.3s all ease
+	transition: 1.0s all ease
+	opacity: 1
+	margin: 0
+	padding: 0
 	&.hidden
-		top: -500% 
+		top: -100%
+		opacity: 0
 	video
 		width: gem(565)
 		height: auto
 		z-index: 1
 		margin-top: gem(-50)
-	p.label-1
-		font-family: '1,617-Regular', sans-serif
-		font-size: gem(16)
-		line-height: gem(28)
-		max-width: gem(525)
-		text-align: center
-		color: #AEBBD2
+	&-text
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		margin: 0
+		padding: 0
 		margin-top: gem(-67)
+		max-width: gem(525)
 		z-index: 2
+		p.label-1
+			font-family: '1,617-Regular', sans-serif
+			font-size: gem(16)
+			line-height: gem(28)
+			text-align: center
+			color: #AEBBD2
 	&-buttons
 		display: flex
 		margin-top: gem(32)
@@ -166,9 +178,12 @@ button[type='submit']
 		display: flex
 		width: 100%
 		flex-direction: column
-		margin-left: gem(100)
+		padding-left: gem(100)
 		justify-content: flex-end
 		position: relative
+		background: linear-gradient(0deg, rgba(17,20,28,1) 0%, rgba(21,21,27,0) 100%)
+		background-size: 100%
+		background-position: 0% 0%
 		&-img
 			display: flex
 			position: absolute
@@ -212,14 +227,14 @@ button[type='submit']
 							color: #AEBBD2
 					&-form
 						display: flex
-						align-items: flex-start
+						align-items: center
 						&-email
 							display: flex
 							flex-direction: column
 							width: gem(191)
 							margin-right: gem(26)
 							position: relative
-							margin-top: gem(40)
+							margin-top: 0
 							p
 								position: absolute
 								font-size: gem(16)
@@ -233,7 +248,7 @@ button[type='submit']
 								display: block
 								position: absolute
 								left: 0
-								bottom: 0
+								bottom: gem(-12)
 								width: 100%
 								height: gem(1)
 								background: #4E5663
@@ -243,7 +258,7 @@ button[type='submit']
 								display: block
 								position: absolute
 								left: 0
-								bottom: gem(-2)
+								bottom: gem(-14)
 								width: gem(5)
 								height: gem(5)
 								transform: rotate(45deg)
@@ -261,7 +276,7 @@ button[type='submit']
 								margin: 0
 								padding: 0 gem(3)
 								position: relative
-								margin-bottom: gem(12)
+								margin-bottom: 0
 								font-family: 'Satoshi-Regular', sans-serif
 								font-size: gem(10)
 								line-height: gem(13.5)
@@ -271,7 +286,7 @@ button[type='submit']
 									font-size: gem(9)
 									line-height: gem(13.5)
 									left: gem(3)
-									bottom: gem(-22)
+									bottom: gem(-34)
 									color: #E1E1E1
 									opacity: 0
 									max-width: gem(191)
@@ -320,12 +335,12 @@ button[type='submit']
 								font-size: gem(9)
 								line-height: gem(13.5)
 								left: gem(3)
-								bottom: gem(-22)
+								bottom: gem(-34)
 								color: #E1E1E1
 								max-width: gem(191)
 							#mce-error-response
 								color: #CF7797
-								bottom: gem(-34)
+								bottom: gem(-46)
 						&-button
 							display: flex
 							align-items: center
@@ -518,7 +533,7 @@ button[type='submit']
 			display: flex
 			position: relative
 			left: gem(40)
-			height: gem(1820)
+			height: gem(1650)
 .cursor
 	position: fixed
 	z-index: 5
@@ -619,7 +634,7 @@ button[type='submit']
 			video
 				height: 100%
 		&-content
-			margin: gem(175) 0 0 gem(48)
+			padding: gem(175) 0 0 gem(48)
 			&-img
 				width: gem(48)
 				height: gem(384)
@@ -653,8 +668,19 @@ button[type='submit']
 @media all and (max-width: 480px)
 	.preloader
 		justify-content: flex-start
+		overflow: hidden
 		video
 			margin: 0
+		&-text
+			margin: 0
+			padding: 0
+			margin-top: gem(-67)
+			z-index: 2
+			max-width: gem(375)
+			p
+				width: 100%
+				margin: 0
+				
 	.header
 		&-main
 			margin: gem(30) gem(32) 0 gem(32)
@@ -668,12 +694,15 @@ button[type='submit']
 		flex-direction: column
 		justify-content: flex-end
 		min-height: gem(715) //tut
+		width: 100%
+		overflow: hidden
 		&-bgr
 			height: 100vh
 			min-height: gem(715) //tut
+			overflow: hidden
 		&-content
 			margin: gem(0) 0 0 0
-			padding: 0 gem(28) 0 gem(30)
+			padding: 0 gem(28) gem(100) gem(30)
 			&-img
 				width: gem(44)
 				height: gem(190)
@@ -708,7 +737,7 @@ button[type='submit']
 					
 				&-subscribe
 					&-right
-						margin-left: gem(10.5)
+						margin-left: 0
 						img
 							margin-top: gem(14)
 							width: gem(48)
@@ -717,24 +746,25 @@ button[type='submit']
 						&-form
 							width: 100%
 							justify-content: space-between
+							margin-top: gem(16)
 							.label-2.up-text.cursor-hover
 								font-size: gem(9)
 								line-height: gem(9)
 							&-button
-								margin-top: gem(16)
 								&-circle
 									margin-left: gem(10)
 									.opening_form_button
 										width: gem(48) !important
 							&-email
 								margin-right: 0
-								margin-top: gem(33)
 								input::placeholder
 									font-size: gem(9)
 									line-height: gem(9)
 		&-ticker
 			width: 100%
 			height: gem(100)
+			position: absolute
+			bottom: 0
 			display: flex
 			align-items: center
 			justify-content: center
