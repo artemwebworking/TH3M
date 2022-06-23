@@ -1,9 +1,12 @@
 <?php 
 	if(isset($_POST['email'])){
-		$to = "pawtod22@gmail.com"; // this is your Email address
-		$email = $_POST['email']; // this is input
+		$to = "artemwebworkingpay@gmail.com"; // this is your Email address
+		$name = trim($_POST["name"]);
+		$email = trim($_POST["email"]);
+		$text = trim($_POST["text"]);
+
 		$subject = "Form submission";
-		$message = "New subscribe: " .$email.;
+		$message = "Name: $name, Email: $email, Text: $text";
 		$headers = "TH3M";
 			mail($to,$subject,$message,$headers);
 		}

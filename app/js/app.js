@@ -8,6 +8,7 @@ window.$ = $
 
 
 require('~/app/js/jquery.marquee.min.js')
+require('~/app/js/jquery.magnific-popup.min.js')
 document.addEventListener('DOMContentLoaded', () => {
 	let isMobile = false
 	let isDesctop = true
@@ -116,57 +117,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+	let inputs = document.querySelectorAll('.input-js')
+
+	for(let i = 0 ; i < inputs.length; i++) {
+		inputs[i].addEventListener('focusin', () => {
+			inputs[i].classList.add('focus')
+		})
+	}
+
+	for(let i = 0 ; i < inputs.length; i++) {
+		inputs[i].addEventListener('focusout', () => {
+			inputs[i].classList.remove('focus')
+		})
+	}
+
+
 
 	//form subscribe to Quickstart
-	// let form = document.getElementById('subscribe-form');
-	// let inputWrapper = document.querySelector('.opening-content-bottom-subscribe-left-form-email')
-	// let successSpan = document.querySelector('.footer-form-answer');
-	// let formAnswer = document.querySelector('.form-answer')
+
+	let inputWrapper = document.querySelector('.email-wrapper')
+	let successSpan = document.querySelector('.footer-form-answer');
+	let formAnswer = document.querySelector('.form-answer')
 	
-	// $('#subscribe-form').submit(function (event) {
-	// 	event.preventDefault();
-	// 	let emailInputValue = document.getElementById('email-input').value
-	// 	if (validateEmail(emailInputValue)) {
-	// 		//success validate
-	// 		var form_data = $(this).serialize();
-	// 		$.ajax({
-	// 			type: 'POST',
-	// 			url: 'send.php',
-	// 			data: form_data,
-	// 			success: function (data) {
-	// 				//success send
-	// 				formAnswer.innerHTML = 'success'
-	// 				inputWrapper.classList.add('success')
-	// 				setTimeout(() => {
-	// 					inputWrapper.classList.remove('success')
-	// 				}, 3000);
-	// 			},
-	// 			error: function (data) {
-	// 				// error send
-	// 				formAnswer.innerHTML = 'error'
-	// 				inputWrapper.classList.add('global-error')
-	// 				setTimeout(() => {
-	// 					inputWrapper.classList.remove('success')
-	// 				}, 3000);
-	// 			}
-	// 		});
-	// 	} else {
-	// 		//validation error
-	// 		console.log('error validation')
-	// 		inputWrapper.classList.add('error')
-	// 		formAnswer.innerHTML = 'please enter a valid email address'
-	// 	}
-	// });
-	let emailInput = document.getElementById('mce-EMAIL')
-	emailInput.addEventListener('input', () => {
-		emailInput.classList.remove('mce_inline_error')
-		if(validateEmail(emailInput.value)) {
-			emailInput.classList.add('filled')
+	$('#form').submit(function (event) {
+		event.preventDefault();
+		let emailInputValue = document.getElementById('email-input').value
+		if (validateEmail(emailInputValue)) {
+			//success validate
+			var form_data = $(this).serialize();
+			$.ajax({
+				type: 'POST',
+				url: 'send.php',
+				data: form_data,
+				success: function (data) {
+					//success send
+					formAnswer.innerHTML = 'Sending successful'
+					formAnswer.classList.add('success')
+					setTimeout(() => {
+						formAnswer.classList.remove('success')
+					}, 3000);
+				},
+				error: function (data) {
+					// error send
+					formAnswer.classList.add('active')
+					formAnswer.innerHTML = 'Error'
+				}
+			});
 		} else {
-			emailInput.classList.remove('filled')
+			//validation error
+			console.log('error validation')
+			inputWrapper.classList.add('error')
+			formAnswer.classList.add('active')
+			formAnswer.innerHTML = 'Please enter a valid email address'
 		}
-		
-		
+	});
+
+	let emailInput = document.getElementById('email-input')
+	emailInput.addEventListener('input', () => {
+		formAnswer.classList.remove('active')
+		inputWrapper.classList.remove('error')		
 	})
 
 	function validateEmail(email) {
@@ -174,4 +183,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		return re.test(email);
 	}
 	
+
+
+
+
+
+// popup
+	$('.popup-with-zoom-anim').magnificPopup({
+		type: 'inline',
+
+		fixedContentPos: false,
+		fixedBgPos: true,
+
+		overflowY: 'auto',
+
+		closeBtnInside: true,
+		preloader: false,
+		
+		midClick: true,
+		removalDelay: 300,
+		mainClass: 'my-mfp-zoom-in'
+	});
 })
